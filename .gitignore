@@ -1,0 +1,6 @@
+target
+gen/
+*.tgz
+*.swp
+.tags
+.DS_Store

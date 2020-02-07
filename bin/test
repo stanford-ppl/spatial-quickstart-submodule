@@ -1,0 +1,16 @@
+#!spatial/pir/env/bin/python
+
+import os, sys, datetime
+sys.path.insert(0, 'spatial/pir/bin')
+from spatial_test import SpatialTest
+
+def main():
+    spatialhome = os.path.abspath('spatial/')
+    cmd = f'--spatial-home={spatialhome}'
+    cmd += ' -p spatialApps'
+    args = cmd.split(" ") + sys.argv[1:]
+    tester = SpatialTest(args=args)
+    tester.run()
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd spatial/pir
+bin/pir ../../$1 ${@:2} --pir-home=$(pwd)
