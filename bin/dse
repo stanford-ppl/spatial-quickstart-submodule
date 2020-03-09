@@ -1,0 +1,19 @@
+#!spatial/pir/env/bin/python3
+import sys
+sys.path.insert(0, 'spatial/pir/bin')
+from dse_util import *
+
+def gen_apps():
+    with dseopen("src/DSE.scala") as f:
+        dseApp("BlackScholes", 
+            ip=16, 
+            op=1, 
+            N=1024*100, 
+            pirArgs=["--split-algo=dfs --retime-glob=true " + \
+                "--pcu-vin={} --pcu-vout={}".format(pcuVin, pcuVout) 
+                for pcuVin in  [3,4]
+                for pcuVout in [1,2]],
+        )
+
+dse = DSE(logdir="logs", project="spatialApps")
+dse.setup_dse(gen_apps)
